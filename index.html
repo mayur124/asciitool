@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>ASCII TOOL</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </head>
+  <body style="width: 100vw; background-color: aliceblue">
+    <div class="myCustomContainer">
+      <h1 class="display-1" id="header">
+        <center id="ascii_value">Press any key to get the ascii code</center>
+      </h1>
+      <center><hr style="width: 50vw" /></center>
+
+      <center>
+        <div class="card" id="key_card">
+          <div class="card-header">
+            Key Pressed
+          </div>
+          <div class="card-body">
+            <h5 class="card-text" id="key_pressed_h5">Text</h5>
+          </div>
+        </div>
+      </center>
+    </div>
+  </body>
+
+  <script>
+    let _ascii_object = [
+      {
+        char: ' ',
+        number: '32'
+      },
+      {
+        char: '!',
+        number: '33'
+      },
+      {
+        char: '',
+        number: '34'
+      },
+      {
+        char: '#',
+        number: '35'
+      },
+      {
+        char: '$',
+        number: '36'
+      },
+      {
+        char: '%',
+        number: '37'
+      },
+      {
+        char: '&',
+        number: '38'
+      },
+      {
+        char: "'",
+        number: '39'
+      },
+      {
+        char: '(',
+        number: '40'
+      },
+      {
+        char: ')',
+        number: '41'
+      },
+      {
+        char: '*',
+        number: '42'
+      },
+      {
+        char: '+',
+        number: '43'
+      },
+      {
+        char: ',',
+        number: '44'
+      },
+      {
+        char: '-',
+        number: '45'
+      },
+      {
+        char: '.',
+        number: '46'
+      },
+      {
+        char: '/',
+        number: '47'
+      },
+      {
+        char: '0',
+        number: '48'
+      },
+      {
+        char: '1',
+        number: '49'
+      },
+      {
+        char: '2',
+        number: '50'
+      },
+      {
+        char: '3',
+        number: '51'
+      },
+      {
+        char: '4',
+        number: '52'
+      },
+      {
+        char: '5',
+        number: '53'
+      },
+      {
+        char: '6',
+        number: '54'
+      },
+      {
+        char: '7',
+        number: '55'
+      },
+      {
+        char: '8',
+        number: '56'
+      },
+      {
+        char: '9',
+        number: '57'
+      },
+      {
+        char: ':',
+        number: '58'
+      },
+      {
+        char: ';',
+        number: '59'
+      },
+      {
+        char: '<',
+        number: '60'
+      },
+      {
+        char: '=',
+        number: '61'
+      },
+      {
+        char: '>',
+        number: '62'
+      },
+      {
+        char: '?',
+        number: '63'
+      },
+      {
+        char: '@',
+        number: '64'
+      },
+      {
+        char: 'A',
+        number: '65'
+      },
+      {
+        char: 'B',
+        number: '66'
+      },
+      {
+        char: 'C',
+        number: '67'
+      },
+      {
+        char: 'D',
+        number: '68'
+      },
+      {
+        char: 'E',
+        number: '69'
+      },
+      {
+        char: 'F',
+        number: '70'
+      },
+      {
+        char: 'G',
+        number: '71'
+      },
+      {
+        char: 'H',
+        number: '72'
+      },
+      {
+        char: 'I',
+        number: '73'
+      },
+      {
+        char: 'J',
+        number: '74'
+      },
+      {
+        char: 'K',
+        number: '75'
+      },
+      {
+        char: 'L',
+        number: '76'
+      },
+      {
+        char: 'M',
+        number: '77'
+      },
+      {
+        char: 'N',
+        number: '78'
+      },
+      {
+        char: 'O',
+        number: '79'
+      },
+      {
+        char: 'P',
+        number: '80'
+      },
+      {
+        char: 'Q',
+        number: '81'
+      },
+      {
+        char: 'R',
+        number: '82'
+      },
+      {
+        char: 'S',
+        number: '83'
+      },
+      {
+        char: 'T',
+        number: '84'
+      },
+      {
+        char: 'U',
+        number: '85'
+      },
+      {
+        char: 'V',
+        number: '86'
+      },
+      {
+        char: 'W',
+        number: '87'
+      },
+      {
+        char: 'X',
+        number: '88'
+      },
+      {
+        char: 'Y',
+        number: '89'
+      },
+      {
+        char: 'Z',
+        number: '90'
+      },
+      {
+        char: '[',
+        number: '91'
+      },
+      {
+        char: '\\',
+        number: '92'
+      },
+      {
+        char: ']',
+        number: '93'
+      },
+      {
+        char: '^',
+        number: '94'
+      },
+      {
+        char: '_',
+        number: '95'
+      },
+      {
+        char: '`',
+        number: '96'
+      },
+      {
+        char: 'a',
+        number: '97'
+      },
+      {
+        char: 'b',
+        number: '98'
+      },
+      {
+        char: 'c',
+        number: '99'
+      },
+      {
+        char: 'd',
+        number: '100'
+      },
+      {
+        char: 'e',
+        number: '101'
+      },
+      {
+        char: 'f',
+        number: '102'
+      },
+      {
+        char: 'g',
+        number: '103'
+      },
+      {
+        char: 'h',
+        number: '104'
+      },
+      {
+        char: 'i',
+        number: '105'
+      },
+      {
+        char: 'j',
+        number: '106'
+      },
+      {
+        char: 'k',
+        number: '107'
+      },
+      {
+        char: 'l',
+        number: '108'
+      },
+      {
+        char: 'm',
+        number: '109'
+      },
+      {
+        char: 'n',
+        number: '110'
+      },
+      {
+        char: 'o',
+        number: '111'
+      },
+      {
+        char: 'p',
+        number: '112'
+      },
+      {
+        char: 'q',
+        number: '113'
+      },
+      {
+        char: 'r',
+        number: '114'
+      },
+      {
+        char: 's',
+        number: '115'
+      },
+      {
+        char: 't',
+        number: '116'
+      },
+      {
+        char: 'u',
+        number: '117'
+      },
+      {
+        char: 'v',
+        number: '118'
+      },
+      {
+        char: 'w',
+        number: '119'
+      },
+      {
+        char: 'x',
+        number: '120'
+      },
+      {
+        char: 'y',
+        number: '121'
+      },
+      {
+        char: 'z',
+        number: '122'
+      },
+      {
+        char: '{',
+        number: '123'
+      },
+      {
+        char: '|',
+        number: '124'
+      },
+      {
+        char: '}',
+        number: '125'
+      },
+      {
+        char: '~',
+        number: '126'
+      }
+    ];
+
+    window.addEventListener('keydown', function(e) {
+      const card_div = document.getElementById('key_card');
+      card_div.style.display = 'block';
+
+      const mainHeader = document.getElementById('header');
+      mainHeader.style.fontWeight = 'bold';
+
+      console.log(e.key);
+      const ascii_value = document.querySelector('#ascii_value');
+      const key_pressed_h5 = document.querySelector('#key_pressed_h5');
+      key_pressed_h5.textContent = e.key;
+      const ascii = _ascii_object.filter(item => item.char == e.key);
+      ascii_value.textContent = ascii[0].number;
+    });
+  </script>
+</html>
